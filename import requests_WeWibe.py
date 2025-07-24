@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import json
 from datetime import datetime
 import pprint
+import azure.functions as func
+import logging
+
 
 URL = "https://www.neste.lv/lv/content/degvielas-cenas"
 HEADERS = {
@@ -49,3 +52,26 @@ if __name__ == "__main__":
         pprint.pprint(prices, sort_dicts=False)
     except Exception as e:
         print("❌ Ошибка при парсинге:", e)
+
+app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+
+@app.route(route="http_get_fuel_price")
+def http_get_fuel_price(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
+    else:
+        return func.HttpResponse(
+             "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
+             status_code=200
+        )
