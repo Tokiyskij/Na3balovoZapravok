@@ -1,14 +1,3 @@
 {
-  "version": "2.0",
-  "logging": {
-    "applicationInsights": {
-      "samplingSettings": {
-        "isEnabled": true,
-        "maxTelemetryItemsPerSecond": 5
-      }
-    },
-    "logLevel": {
-      "Function": "Information"
-    }
-  }
+  "version": "2.0"
 }
