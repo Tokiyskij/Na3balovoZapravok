@@ -70,4 +70,4 @@ jobs:
           app-name: 'azure-function-to-exstract-data'
           slot-name: 'Production'
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DE01A6AC0E1C4FF39ACD096AFFFB2647 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_09C6D3F61C944C92B47DD25BF0D46401 }}
